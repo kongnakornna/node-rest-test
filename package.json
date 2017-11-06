@@ -1,6 +1,6 @@
 {
   "name": "node-rest-template",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description":
     "This is a powerful RESTful API-related to the integration of express and mysql with sequelize",
   "private": true,
