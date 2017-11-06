@@ -1,0 +1,37 @@
+{
+  "name": "node-rest-template",
+  "version": "1.0.0",
+  "description":
+    "This is a powerful RESTful API-related to the integration of express and mysql with sequelize",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.3",
+    "crypto": "0.0.3",
+    "emailjs": "^1.0.11",
+    "express": "^4.14.1",
+    "express-session": "^1.15.3",
+    "multer": "^1.3.0",
+    "mysql2": "^1.3.5",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "pdfmake": "^0.1.32",
+    "request": "^2.81.0",
+    "sequelize": "^4.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ttgint/node-rest-template.git"
+  },
+  "main": "server.js",
+  "author": "Baris Ozdemir",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ttgint/node-rest-template/issues"
+  },
+  "homepage": "https://github.com/ttgint/node-rest-template#readme"
+}
