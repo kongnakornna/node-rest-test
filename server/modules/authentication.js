@@ -8,8 +8,7 @@
     env = require("./../config/env");
 
   module.exports = {
-    localStrategy: new LocalStrategy(
-      {
+    localStrategy: new LocalStrategy({
         usernameField: "email",
         passwordField: "password"
       },
@@ -22,7 +21,9 @@
           })
           .then(user => {
             if (user === null) {
-              return done(null, false, { message: "Incorrect credentials." });
+              return done(null, false, {
+                message: "Incorrect credentials."
+              });
             }
 
             let hash_sha1 = (password, salt) => {
@@ -42,16 +43,18 @@
               return done(null, user);
             }
 
-            return done(null, false, { message: "Incorrect credentials." });
+            return done(null, false, {
+              message: "Incorrect credentials."
+            });
           });
       }
     ),
 
-    serializeUser: (user, done) => {
+    serializeUser(user, done) {
       done(null, user.id);
     },
 
-    deserializeUser: (id, done) => {
+    deserializeUser(id, done) {
       db.mainDb.user
         .findOne({
           where: {
@@ -67,7 +70,7 @@
         });
     },
 
-    login: (req, res, next) => {
+    login(req, res, next) {
       return passport.authenticate("local", (err, user) => {
         if (err) {
           return next(err);
@@ -85,12 +88,12 @@
       })(req, res, next);
     },
 
-    logout: (req, res) => {
+    logout(req, res) {
       req.logout();
       return res.json("OK");
     },
 
-    isAuthorized: (req, res, next) => {
+    isAuthorized(req, res, next) {
       if (
         req.isAuthenticated() ||
         env.databases.main.NODE_ENV === "development"
@@ -101,7 +104,7 @@
       }
     },
 
-    hash_sha1: (password, salt) => {
+    hash_sha1(password, salt) {
       password = salt + password;
       let hash = crypto.createHash("sha1"); /** Hashing algorithm sha1 */
       hash.update(password);
