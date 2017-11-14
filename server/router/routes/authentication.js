@@ -1,7 +1,6 @@
 "use strict";
 
-const passport = require("passport"),
-  authentication = require("../../modules/authentication"),
+const authentication = require("../../modules/authentication"),
   env = require("../../config/env");
 
 let printConsoleMessage = () => {

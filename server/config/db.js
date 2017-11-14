@@ -6,8 +6,7 @@ const env = require("./env");
 const mainDb = new Sequelize(
   env.databases.main.DATABASE_NAME,
   env.databases.main.DATABASE_USERNAME,
-  env.databases.main.DATABASE_PASSWORD,
-  {
+  env.databases.main.DATABASE_PASSWORD, {
     host: env.databases.main.DATABASE_HOST,
     port: env.databases.main.DATABASE_PORT,
     dialect: env.databases.main.DATABASE_DIALECT,

@@ -37,7 +37,7 @@
 
             let hashedPassword = hash_sha1(
               password,
-              "iouFYT37821941YXUZYTQWiii32894UYXzklm"
+              "key"
             );
             if (user.password === hashedPassword) {
               return done(null, user);

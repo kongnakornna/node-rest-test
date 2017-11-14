@@ -1,7 +1,6 @@
 "use strict";
 
-const crypto = require("crypto"),
-  authentication = require("../../modules/authentication");
+const authentication = require("../../modules/authentication");
 
 module.exports = (app, db) => {
   app.get("/api/roles", authentication.isAuthorized, (req, res) => {
@@ -18,10 +17,16 @@ module.exports = (app, db) => {
   app.get("/api/roles/:id", authentication.isAuthorized, (req, res) => {
     db.mainDb.role
       .find({
-        where: { id: req.params.id }
+        where: {
+          id: req.params.id
+        }
       })
       .then(role => {
-        res.json(role);
+        if (role) {
+          res.json(role);
+        } else {
+          res.sendStatus(404);
+        }
       })
       .catch(err => {
         res.status(500).json(err);
@@ -44,10 +49,16 @@ module.exports = (app, db) => {
 
   app.put("/api/roles/:id", authentication.isAuthorized, (req, res) => {
     db.mainDb.role
-      .update(req.body, { where: { id: req.params.id } })
+      .update(req.body, {
+        where: {
+          id: req.params.id
+        }
+      })
       .then(updatedRole => {
         if (updatedRole) {
           res.json("Updated Successfully");
+        } else {
+          res.sendStatus(400);
         }
       })
       .catch(err => {
@@ -58,7 +69,9 @@ module.exports = (app, db) => {
   app.delete("/api/roles/:id", authentication.isAuthorized, (req, res) => {
     db.mainDb.role
       .destroy({
-        where: { id: req.params.id }
+        where: {
+          id: req.params.id
+        }
       })
       .then(deletedRole => {
         if (deletedRole === 0) {

@@ -28,7 +28,9 @@ app.use(
   })
 );
 
-app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.json({
+  limit: "50mb"
+}));
 app.use(
   bodyParser.urlencoded({
     limit: "50mb",
@@ -47,7 +49,7 @@ router(app, db);
 app.use(express.static(path.join(__dirname, "public/")));
 app.use(express.static(path.join(__dirname, "uploads/")));
 
-app.get("/*", function(req, res, next) {
+app.get("/*", function (req, res, next) {
   res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 
