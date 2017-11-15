@@ -4,8 +4,8 @@
   const passport = require("passport"),
     LocalStrategy = require("passport-local").Strategy,
     db = require("./../config/db.js"),
-    crypto = require("crypto"),
-    env = require("./../config/env");
+    crypto = require("crypto");
+  require('dotenv').config();
 
   module.exports = {
     localStrategy: new LocalStrategy({
@@ -96,7 +96,7 @@
     isAuthorized(req, res, next) {
       if (
         req.isAuthenticated() ||
-        env.databases.main.NODE_ENV === "development"
+        process.env.NODE_ENV === "development"
       ) {
         return next();
       } else {

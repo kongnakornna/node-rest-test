@@ -10,12 +10,12 @@ const fs = require("fs"),
   passport = require("passport"),
   bodyParser = require("body-parser"),
   session = require("express-session"),
-  env = require("./server/config/env"),
   db = require("./server/config/db.js"),
   cookieParser = require("cookie-parser"),
   router = require("./server/router/index"),
-  authentication = require("./server/modules/authentication"),
-  PORT = env.PORT;
+  authentication = require("./server/modules/authentication");
+
+require('dotenv').config();
 
 app.use(cors());
 app.use(
@@ -53,5 +53,5 @@ app.get("/*", function (req, res, next) {
   res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 
-app.listen(PORT);
-console.log("serving template at http://localhost:8080");
+app.listen(process.env.PORT);
+console.log(`serving template at http://localhost:${process.env.PORT}`);

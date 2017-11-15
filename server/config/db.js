@@ -1,15 +1,15 @@
 "use strict";
 
 const Sequelize = require("sequelize");
-const env = require("./env");
+require('dotenv').config();
 
 const mainDb = new Sequelize(
-  env.databases.main.DATABASE_NAME,
-  env.databases.main.DATABASE_USERNAME,
-  env.databases.main.DATABASE_PASSWORD, {
-    host: env.databases.main.DATABASE_HOST,
-    port: env.databases.main.DATABASE_PORT,
-    dialect: env.databases.main.DATABASE_DIALECT,
+  process.env.DATABASE_NAME,
+  process.env.DATABASE_USERNAME,
+  process.env.DATABASE_PASSWORD, {
+    host: process.env.DATABASE_HOST,
+    port: process.env.DATABASE_PORT,
+    dialect: process.env.DATABASE_DIALECT,
     timezone: "+03:00",
     define: {
       underscored: true,

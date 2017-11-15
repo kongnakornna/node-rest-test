@@ -1,7 +1,7 @@
 "use strict";
 
-const authentication = require("../../modules/authentication"),
-  env = require("../../config/env");
+const authentication = require("../../modules/authentication");
+require('dotenv').config();
 
 let printConsoleMessage = () => {
   return (req, res, next) => {
@@ -13,7 +13,7 @@ module.exports = (app, db) => {
   app.get("/api/env", (req, res) => {
     res.json({
       host: "http://" + req.headers.host + "/api",
-      env: env.NODE_ENV
+      env: process.env.NODE_ENV
     });
   });
 
