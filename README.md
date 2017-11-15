@@ -38,7 +38,8 @@ This project is a powerful RESTful API-related to the integration of express and
 
 ### Configuration
 
-* [Env](https://github.com/ttgint/node-rest-template/blob/master/server/config/env.js)
+* [Env](https://github.com/ttgint/node-rest-template/blob/master/.env)
+* [Test Env](https://github.com/ttgint/node-rest-template/blob/master/server/config/env.js)
 * [Db](https://github.com/ttgint/node-rest-template/blob/master/server/config/db.js)
 
 ### Installation
