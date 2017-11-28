@@ -6,7 +6,7 @@
     hashids = new Hashids();
 
   module.exports = {
-    shuffle: array => {
+    shuffle(array) {
       let currentIndex = array.length,
         temporaryValue,
         randomIndex;
@@ -20,7 +20,7 @@
 
       return array;
     },
-    capitalizeFirstLetter: string => {
+    capitalizeFirstLetter(string) {
       let keysArray = string.split(" ");
       for (let i = 0; i < keysArray.length; i++) {
         keysArray[i] =
@@ -29,20 +29,20 @@
       }
       return keysArray.join(" ");
     },
-    uniqueArray: array => {
+    uniqueArray(array) {
       return array.filter((x, i, a) => a.indexOf(x) == i);
     },
-    textSplit: text => {
+    textSplit(text) {
       let stringArray = text.split(/[\- ,.]+/);
       for (let i = 0; i < stringArray.length; i++) {
         stringArray[i] = stringArray[i].trim().toLowerCase();
       }
       return stringArray;
     },
-    arrayDifference: (arrayA, arrayB) => {
+    arrayDifference(arrayA, arrayB) {
       return arrayA.filter(e => !arrayB.find(a => e == a));
     },
-    getDistance: (coordinatesA, coordinatesB, i) => {
+    getDistance(coordinatesA, coordinatesB, i) {
       let distance = geolib.getDistance(
         {
           latitude: coordinatesA[0],
@@ -73,16 +73,35 @@
         distance_score: i
       };
     },
-    hash: string => {
+    hash(string) {
       return hashids.encode(string);
     },
-    joinArrayToString: (array, seperator) => {
+    joinArrayToString(array, seperator) {
       let result = array
         .map(elem => {
           return elem;
         })
         .join(seperator);
       return result;
+    },
+    convertString(phrase) {
+      var maxLength = 100;
+
+      var returnString = phrase.toLowerCase();
+      returnString = returnString.replace(/ö/g, "o");
+      returnString = returnString.replace(/ç/g, "c");
+      returnString = returnString.replace(/ş/g, "s");
+      returnString = returnString.replace(/ı/g, "i");
+      returnString = returnString.replace(/ğ/g, "g");
+      returnString = returnString.replace(/ü/g, "u");
+      returnString = returnString.replace(/[^a-z0-9\s-]/g, "");
+      returnString = returnString.replace(/[\s-]+/g, " ");
+      returnString = returnString.replace(/^\s+|\s+$/g, "");
+      if (returnString.length > maxLength)
+        returnString = returnString.substring(0, maxLength);
+      returnString = returnString.replace(/\s/g, "-");
+
+      return returnString;
     }
   };
 })();
