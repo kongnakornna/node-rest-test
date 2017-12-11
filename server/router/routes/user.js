@@ -1,7 +1,6 @@
 "use strict";
 
-const crypto = require("crypto"),
-  authentication = require("../../modules/authentication");
+const authentication = require("../../modules/authentication");
 
 module.exports = (app, db) => {
   app.get("/api/users", authentication.isAuthorized, (req, res) => {
